@@ -1,73 +1,98 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Projeto Banco Monolítico em NestJS
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Este projeto é um exemplo de uma aplicação monolítica de banco implementada utilizando NestJS.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Estrutura do Projeto
 
-## Description
+A estrutura do projeto está organizada da seguinte maneira:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
-```bash
-$ npm install
+```
+banco
+├── src
+│   ├── cliente
+│   │   ├── cliente.controller.ts
+│   │   ├── cliente.module.ts
+│   │   ├── cliente.service.ts
+│   │   ├── schemas
+│   │   │   └── cliente.schema.ts
+│   ├── conta
+│   │   ├── conta.controller.ts
+│   │   ├── conta.module.ts
+│   │   ├── conta.service.ts
+│   │   ├── schemas
+│   │   │   └── conta.schema.ts
+│   ├── gerente
+│   │   ├── gerente.controller.ts
+│   │   ├── gerente.module.ts
+│   │   ├── gerente.service.ts
+│   │   ├── schemas
+│   │   │   └── gerente.schema.ts
+│   ├── app.module.ts
+│   ├── main.ts
+├── .gitignore
+├── nest-cli.json
+├── package.json
+├── tsconfig.json
+├── tsconfig.build.json
 ```
 
-## Running the app
+- **cliente**, **conta**, **gerente**: Módulos separados para gerenciar clientes, contas e gerentes.
+- **schemas**: Esquemas de dados relacionados para cada entidade.
+- **app.module.ts**: Módulo principal que importa todos os outros módulos.
+- **main.ts**: Ponto de entrada da aplicação.
+
+## Instalação
+
+Certifique-se de ter o Node.js e o npm instalados. Clone o repositório e execute:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm install
 ```
 
-## Test
+## Configuração
+
+Configure as variáveis de ambiente em um arquivo `.env`.
+
+## Executando a Aplicação
+
+Para iniciar a aplicação localmente em modo de desenvolvimento, execute:
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npm start
 ```
 
-## Support
+## Rotas
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+A seguir estão as principais rotas disponíveis na aplicação:
 
-## Stay in touch
+- **Clientes**: `/clientes`
+  - `GET /`: Retorna todos os clientes.
+  - `POST /`: Cria um novo cliente.
+  - `GET /:id`: Retorna um cliente específico.
+  - `PUT /:id`: Atualiza um cliente.
+  - `DELETE /:id`: Remove um cliente.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- **Contas**: `/contas`
+  - `GET /`: Retorna todas as contas.
+  - `POST /`: Cria uma nova conta.
+  - `GET /:id`: Retorna uma conta específica.
+  - `PUT /:id`: Atualiza uma conta.
+  - `DELETE /:id`: Remove uma conta.
 
-## License
+- **Gerentes**: `/gerentes`
+  - `GET /`: Retorna todos os gerentes.
+  - `POST /`: Cria um novo gerente.
+  - `GET /:id`: Retorna um gerente específico.
+  - `PUT /:id`: Atualiza um gerente.
+  - `DELETE /:id`: Remove um gerente.
 
-Nest is [MIT licensed](LICENSE).
+## Contribuição
+
+Sinta-se à vontade para contribuir com melhorias para este projeto. Crie uma issue para discutir novas funcionalidades ou correções de bugs.
+
+## Licença
+
+Este projeto está licenciado sob a [MIT License](/LICENSE).
+
+---
+
